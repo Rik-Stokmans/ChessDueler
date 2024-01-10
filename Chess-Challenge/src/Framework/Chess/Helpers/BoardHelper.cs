@@ -1,4 +1,6 @@
-﻿namespace ChessChallenge.Chess
+﻿using Chess_Challenge.Framework.Chess.Board;
+
+namespace Chess_Challenge.Framework.Chess.Helpers
 {
     public static class BoardHelper
     {

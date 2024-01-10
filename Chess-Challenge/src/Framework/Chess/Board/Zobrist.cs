@@ -1,4 +1,4 @@
-﻿namespace ChessChallenge.Chess
+﻿namespace Chess_Challenge.Framework.Chess.Board
 {
     // Helper class for the calculation of zobrist hash.
     // This is a single 64bit value that (non-uniquely) represents the current state of the game.

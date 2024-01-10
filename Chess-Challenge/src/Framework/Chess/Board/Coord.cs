@@ -1,5 +1,7 @@
 ﻿using System;
-namespace ChessChallenge.Chess
+using Chess_Challenge.Framework.Chess.Helpers;
+
+namespace Chess_Challenge.Framework.Chess.Board
 {
     // Structure for representing squares on the chess board as file/rank integer pairs.
     // (0, 0) = a1, (7, 7) = h8.

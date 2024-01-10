@@ -1,6 +1,6 @@
 using System;
 
-namespace ChessChallenge.API
+namespace Chess_Challenge.API
 {
     public readonly struct Piece : IEquatable<Piece>
     {

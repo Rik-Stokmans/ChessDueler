@@ -1,7 +1,7 @@
 ﻿using System;
-using static ChessChallenge.Application.Settings;
+using static Chess_Challenge.Framework.Application.Core.Settings;
 
-namespace ChessChallenge.Application
+namespace Chess_Challenge.Framework.Application.Helpers
 {
     public static class ConsoleHelper
     {

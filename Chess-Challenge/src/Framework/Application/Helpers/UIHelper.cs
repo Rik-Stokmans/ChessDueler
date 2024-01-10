@@ -1,9 +1,9 @@
-﻿using Raylib_cs;
-using System;
+﻿using System;
 using System.Numerics;
-using static ChessChallenge.Application.FileHelper;
+using Raylib_cs;
+using static Chess_Challenge.Framework.Application.Helpers.FileHelper;
 
-namespace ChessChallenge.Application
+namespace Chess_Challenge.Framework.Application.Helpers
 {
     public static class UIHelper
     {

@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace ChessChallenge.Application
+namespace Chess_Challenge.Framework.Application.Core
 {
     public static class Settings
     {

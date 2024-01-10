@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Chess_Challenge.Framework.Chess.Board;
 
-namespace ChessChallenge.Chess
+namespace Chess_Challenge.Framework.Chess.Helpers
 {
     // Helper class for dealing with FEN strings
     public static class FenUtility
@@ -22,7 +22,7 @@ namespace ChessChallenge.Chess
         /// When alwaysIncludeEPSquare is true the en passant square will be included
         /// in the fen string even if no enemy pawn is in a position to capture it.
         /// </summary>
-        public static string CurrentFen(Board board, bool alwaysIncludeEPSquare = true)
+        public static string CurrentFen(Board.Board board, bool alwaysIncludeEPSquare = true)
         {
             string fen = "";
             for (int rank = 7; rank >= 0; rank--)
@@ -124,7 +124,7 @@ namespace ChessChallenge.Chess
             return fen;
         }
 
-        static bool EnPassantCanBeCaptured(int epFileIndex, int epRankIndex, Board board)
+        static bool EnPassantCanBeCaptured(int epFileIndex, int epRankIndex, Board.Board board)
         {
             Coord captureFromA = new Coord(epFileIndex - 1, epRankIndex + (board.IsWhiteToMove ? -1 : 1));
             Coord captureFromB = new Coord(epFileIndex + 1, epRankIndex + (board.IsWhiteToMove ? -1 : 1));

@@ -1,9 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
-using System;
 
-namespace ChessChallenge.Application
+namespace Chess_Challenge.Framework.Application.Helpers
 {
     public static class FileHelper
     {

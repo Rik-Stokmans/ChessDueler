@@ -1,7 +1,8 @@
-using ChessChallenge.Chess;
 using System;
+using Chess_Challenge.Framework.Application.Helpers.API_Helpers;
+using Chess_Challenge.Framework.Chess.Helpers;
 
-namespace ChessChallenge.API
+namespace Chess_Challenge.API
 {
 	public readonly struct Move : IEquatable<Move>
 	{
@@ -11,15 +12,15 @@ namespace ChessChallenge.API
 		public PieceType CapturePieceType => (PieceType)(pieceTypeData >> 3);
 		public PieceType PromotionPieceType => (PieceType)move.PromotionPieceType;
 		public bool IsCapture => (pieceTypeData >> 3) != 0;
-		public bool IsEnPassant => move.MoveFlag == Chess.Move.EnPassantCaptureFlag;
+		public bool IsEnPassant => move.MoveFlag == Framework.Chess.Board.Move.EnPassantCaptureFlag;
 
 		public bool IsPromotion => move.IsPromotion;
-		public bool IsCastles => move.MoveFlag == Chess.Move.CastleFlag;
+		public bool IsCastles => move.MoveFlag == Framework.Chess.Board.Move.CastleFlag;
 		public bool IsNull => move.IsNull;
 		public ushort RawValue => move.Value;
 		public static readonly Move NullMove = new();
 
-		readonly Chess.Move move;
+		readonly Framework.Chess.Board.Move move;
 		readonly ushort pieceTypeData;
 
 		/// <summary>
@@ -28,7 +29,7 @@ namespace ChessChallenge.API
 		/// </summary>
 		public Move()
 		{
-			move = Chess.Move.NullMove;
+			move = Framework.Chess.Board.Move.NullMove;
 			pieceTypeData = 0;
 		}
 
@@ -38,7 +39,7 @@ namespace ChessChallenge.API
 		/// </summary>
         public Move(string moveName, Board board)
         {
-			var data = Application.APIHelpers.MoveHelper.CreateMoveFromName(moveName, board);
+			var data = MoveHelper.CreateMoveFromName(moveName, board);
 			move = data.move;
 			pieceTypeData = (ushort)((int)data.pieceType | ((int)data.captureType << 3));
 
@@ -47,7 +48,7 @@ namespace ChessChallenge.API
         /// <summary>
         /// Internal move constructor. Do not use.
         /// </summary>
-        public Move(Chess.Move move, int movePieceType, int capturePieceType)
+        public Move(Framework.Chess.Board.Move move, int movePieceType, int capturePieceType)
 		{
 			this.move = move;
 			pieceTypeData = (ushort)(movePieceType | (capturePieceType << 3));

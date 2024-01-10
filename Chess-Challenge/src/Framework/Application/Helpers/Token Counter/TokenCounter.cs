@@ -1,11 +1,11 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.Text;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Text;
 
-namespace ChessChallenge.Application
+namespace Chess_Challenge.Framework.Application.Helpers.Token_Counter
 {
     public static class TokenCounter
     {

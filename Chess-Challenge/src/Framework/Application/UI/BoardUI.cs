@@ -1,13 +1,18 @@
-﻿using ChessChallenge.Chess;
-using Raylib_cs;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Numerics;
 using System.IO;
-using static ChessChallenge.Application.UIHelper;
-using ChessChallenge.Application.APIHelpers;
+using System.Numerics;
+using Chess_Challenge.Framework.Application.Core;
+using Chess_Challenge.Framework.Application.Helpers;
+using Chess_Challenge.Framework.Application.Helpers.API_Helpers;
+using Chess_Challenge.Framework.Chess.Board;
+using Chess_Challenge.Framework.Chess.Helpers;
+using Chess_Challenge.Framework.Chess.Move_Generation;
+using Chess_Challenge.Framework.Chess.Move_Generation.Bitboards;
+using Raylib_cs;
+using static Chess_Challenge.Framework.Application.Helpers.UIHelper;
 
-namespace ChessChallenge.Application
+namespace Chess_Challenge.Framework.Application.UI
 {
     public class BoardUI
     {

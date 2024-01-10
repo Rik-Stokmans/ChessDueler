@@ -1,4 +1,4 @@
-namespace ChessChallenge.Chess
+namespace Chess_Challenge.Framework.Chess.Result
 {
     public enum GameResult
     {

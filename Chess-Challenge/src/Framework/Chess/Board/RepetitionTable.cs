@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace ChessChallenge.Chess
+namespace Chess_Challenge.Framework.Chess.Board
 {
     public class RepetitionTable
     {

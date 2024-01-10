@@ -1,6 +1,7 @@
+using Chess_Challenge.Framework.Chess.Helpers;
 using static System.Math;
 
-namespace ChessChallenge.Chess
+namespace Chess_Challenge.Framework.Chess.Move_Generation.Bitboards
 {
     // A collection of precomputed bitboards for use during movegen, search, etc.
     public static class Bits

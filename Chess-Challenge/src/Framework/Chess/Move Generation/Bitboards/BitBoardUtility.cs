@@ -1,7 +1,7 @@
-﻿namespace ChessChallenge.Chess
-{
-    using System.Numerics;
+﻿using System.Numerics;
 
+namespace Chess_Challenge.Framework.Chess.Move_Generation.Bitboards
+{
     public static class BitBoardUtility
     {
 

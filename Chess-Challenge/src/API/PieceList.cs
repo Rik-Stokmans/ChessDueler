@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Chess_Challenge.Framework.Chess.Board;
 
-namespace ChessChallenge.API
+namespace Chess_Challenge.API
 {
     /// <summary>
     /// A special list for storing pieces of a particular type and colour
@@ -13,19 +14,19 @@ namespace ChessChallenge.API
         public readonly PieceType TypeOfPieceInList;
         public Piece GetPiece(int index) => this[index];
 
-        readonly Chess.PieceList list;
+        readonly Framework.Chess.Board.PieceList list;
         readonly Board board;
 
         /// <summary>
         /// Piece List constructor (you shouldn't be creating your own piece lists in
 		/// this challenge, but rather accessing the existing lists from the board).
         /// </summary>
-        public PieceList(Chess.PieceList list, Board board, int piece)
+        public PieceList(Framework.Chess.Board.PieceList list, Board board, int piece)
         {
             this.board = board;
             this.list = list;
-            TypeOfPieceInList = (PieceType)Chess.PieceHelper.PieceType(piece);
-            IsWhitePieceList = Chess.PieceHelper.IsWhite(piece);
+            TypeOfPieceInList = (PieceType)PieceHelper.PieceType(piece);
+            IsWhitePieceList = PieceHelper.IsWhite(piece);
         }
 
 

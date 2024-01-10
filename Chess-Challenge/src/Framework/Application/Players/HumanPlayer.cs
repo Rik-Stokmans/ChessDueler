@@ -1,8 +1,11 @@
-﻿using ChessChallenge.Chess;
+﻿using System.Numerics;
+using Chess_Challenge.Framework.Application.Core;
+using Chess_Challenge.Framework.Application.UI;
+using Chess_Challenge.Framework.Chess.Board;
+using Chess_Challenge.Framework.Chess.Move_Generation;
 using Raylib_cs;
-using System.Numerics;
 
-namespace ChessChallenge.Application
+namespace Chess_Challenge.Framework.Application.Players
 {
     public class HumanPlayer
     {

@@ -1,9 +1,10 @@
-﻿using Raylib_cs;
-using System.IO;
+﻿using System.IO;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Chess_Challenge.Framework.Application.Helpers;
+using Raylib_cs;
 
-namespace ChessChallenge.Application
+namespace Chess_Challenge.Framework.Application.Core
 {
     static class Program
     {

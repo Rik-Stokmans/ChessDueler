@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Chess_Challenge.Framework.Chess.Board;
 
-namespace ChessChallenge.Chess
+namespace Chess_Challenge.Framework.Chess.Helpers
 {
     public static class PGNLoader
     {
@@ -37,7 +38,7 @@ namespace ChessChallenge.Chess
 
         static Move[] MovesFromAlgebraic(string[] algebraicMoves)
         {
-            Board board = new Board();
+            Board.Board board = new Board.Board();
             board.LoadStartPosition();
             var moves = new List<Move>();
 

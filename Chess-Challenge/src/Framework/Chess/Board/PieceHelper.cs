@@ -1,4 +1,4 @@
-﻿namespace ChessChallenge.Chess
+﻿namespace Chess_Challenge.Framework.Chess.Board
 {
     // Contains definitions for each piece type (represented as integers),
     // as well as various helper functions for dealing with pieces.
