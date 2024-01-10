@@ -1,4 +1,4 @@
-﻿namespace Chess_Challenge.API
+﻿namespace ChessChallenge.API
 {
     public enum PieceType
     {

@@ -1,9 +1,8 @@
-﻿using System.Numerics;
-using Chess_Challenge.Framework.Application.Core;
-using Chess_Challenge.Framework.Application.Helpers;
-using Raylib_cs;
+﻿using Raylib_cs;
+using System.Numerics;
+using System;
 
-namespace Chess_Challenge.Framework.Application.UI
+namespace ChessChallenge.Application
 {
     public static class MatchStatsUI
     {

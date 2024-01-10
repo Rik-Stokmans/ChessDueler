@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using Chess_Challenge.Framework.Chess.Board;
-using Chess_Challenge.Framework.Chess.Helpers;
-
-namespace Chess_Challenge.Framework.Chess.Move_Generation
+﻿namespace ChessChallenge.Chess
 {
+    using System.Collections.Generic;
     using static System.Math;
 
     public static class PrecomputedMoveData
@@ -166,12 +163,12 @@ namespace Chess_Challenge.Framework.Chess.Move_Generation
                     if (y < 7)
                     {
                         pawnCapturesWhite.Add(squareIndex + 7);
-                        pawnAttackBitboards[squareIndex][Board.Board.WhiteIndex] |= 1ul << (squareIndex + 7);
+                        pawnAttackBitboards[squareIndex][Board.WhiteIndex] |= 1ul << (squareIndex + 7);
                     }
                     if (y > 0)
                     {
                         pawnCapturesBlack.Add(squareIndex - 9);
-                        pawnAttackBitboards[squareIndex][Board.Board.BlackIndex] |= 1ul << (squareIndex - 9);
+                        pawnAttackBitboards[squareIndex][Board.BlackIndex] |= 1ul << (squareIndex - 9);
                     }
                 }
                 if (x < 7)
@@ -179,12 +176,12 @@ namespace Chess_Challenge.Framework.Chess.Move_Generation
                     if (y < 7)
                     {
                         pawnCapturesWhite.Add(squareIndex + 9);
-                        pawnAttackBitboards[squareIndex][Board.Board.WhiteIndex] |= 1ul << (squareIndex + 9);
+                        pawnAttackBitboards[squareIndex][Board.WhiteIndex] |= 1ul << (squareIndex + 9);
                     }
                     if (y > 0)
                     {
                         pawnCapturesBlack.Add(squareIndex - 7);
-                        pawnAttackBitboards[squareIndex][Board.Board.BlackIndex] |= 1ul << (squareIndex - 7);
+                        pawnAttackBitboards[squareIndex][Board.BlackIndex] |= 1ul << (squareIndex - 7);
                     }
                 }
                 pawnAttacksWhite[squareIndex] = pawnCapturesWhite.ToArray();

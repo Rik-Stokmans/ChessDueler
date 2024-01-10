@@ -1,14 +1,13 @@
-﻿using System;
-using Chess_Challenge.API;
-using Chess_Challenge.Framework.Chess.Helpers;
-using Move = Chess_Challenge.Framework.Chess.Board.Move;
+﻿using ChessChallenge.Chess;
+using System;
+using ChessChallenge.API;
 
-namespace Chess_Challenge.Framework.Application.Helpers.API_Helpers
+namespace ChessChallenge.Application.APIHelpers
 {
 
     public class MoveHelper
     {
-        public static (Move move, PieceType pieceType, PieceType captureType) CreateMoveFromName(string moveNameUCI, API.Board board)
+        public static (Chess.Move move, PieceType pieceType, PieceType captureType) CreateMoveFromName(string moveNameUCI, API.Board board)
         {
             int indexStart = BoardHelper.SquareIndexFromName(moveNameUCI[0] + "" + moveNameUCI[1]);
             int indexTarget = BoardHelper.SquareIndexFromName(moveNameUCI[2] + "" + moveNameUCI[3]);
@@ -31,7 +30,7 @@ namespace Chess_Challenge.Framework.Application.Helpers.API_Helpers
             PieceType capturedPieceType = board.GetPiece(targetSquare).PieceType;
 
             // Figure out move flag
-            int flag = Move.NoFlag;
+            int flag = Chess.Move.NoFlag;
 
             if (movedPieceType == PieceType.Pawn)
             {
@@ -39,10 +38,10 @@ namespace Chess_Challenge.Framework.Application.Helpers.API_Helpers
                 {
                     flag = promotePieceType switch
                     {
-                        PieceType.Queen => Move.PromoteToQueenFlag,
-                        PieceType.Rook => Move.PromoteToRookFlag,
-                        PieceType.Knight => Move.PromoteToKnightFlag,
-                        PieceType.Bishop => Move.PromoteToBishopFlag,
+                        PieceType.Queen => Chess.Move.PromoteToQueenFlag,
+                        PieceType.Rook => Chess.Move.PromoteToRookFlag,
+                        PieceType.Knight => Chess.Move.PromoteToKnightFlag,
+                        PieceType.Bishop => Chess.Move.PromoteToBishopFlag,
                         _ => 0
                     };
                 }
@@ -50,12 +49,12 @@ namespace Chess_Challenge.Framework.Application.Helpers.API_Helpers
                 {
                     if (Math.Abs(targetSquare.Rank - startSquare.Rank) == 2)
                     {
-                        flag = Move.PawnTwoUpFlag;
+                        flag = Chess.Move.PawnTwoUpFlag;
                     }
                     // En-passant
                     else if (startSquare.File != targetSquare.File && board.GetPiece(targetSquare).IsNull)
                     {
-                        flag = Move.EnPassantCaptureFlag;
+                        flag = Chess.Move.EnPassantCaptureFlag;
                     }
                 }
             }
@@ -63,11 +62,11 @@ namespace Chess_Challenge.Framework.Application.Helpers.API_Helpers
             {
                 if (Math.Abs(startSquare.File - targetSquare.File) > 1)
                 {
-                    flag = Move.CastleFlag;
+                    flag = Chess.Move.CastleFlag;
                 }
             }
 
-            Move coreMove = new Move(startSquare.Index, targetSquare.Index, flag);
+            Chess.Move coreMove = new Chess.Move(startSquare.Index, targetSquare.Index, flag);
             return (coreMove, movedPieceType, capturedPieceType);
         }
 

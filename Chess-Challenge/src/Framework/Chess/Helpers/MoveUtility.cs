@@ -1,7 +1,4 @@
-using Chess_Challenge.Framework.Chess.Board;
-using Chess_Challenge.Framework.Chess.Move_Generation;
-
-namespace Chess_Challenge.Framework.Chess.Helpers
+namespace ChessChallenge.Chess
 {
 	// Helper class for converting between various move representations:
 	// UCI: move represented by string, e.g. "e2e4"
@@ -12,7 +9,7 @@ namespace Chess_Challenge.Framework.Chess.Helpers
 		// Converts a moveName into internal move representation
 		// Name is expected in UCI format: "e2e4"
 		// Promotions can be written with or without equals sign, for example: "e7e8=q" or "e7e8q"
-		public static Move GetMoveFromUCIName(string moveName, Board.Board board)
+		public static Move GetMoveFromUCIName(string moveName, Board board)
 		{
 
 			int startSquare = BoardHelper.SquareIndexFromName(moveName.Substring(0, 2));
@@ -96,7 +93,7 @@ namespace Chess_Challenge.Framework.Chess.Helpers
 		// Get name of move in Standard Algebraic Notation (SAN)
 		// Examples: "e4", "Bxf7+", "O-O", "Rh8#", "Nfd2"
 		// Note, the move must not yet have been made on the board
-		public static string GetMoveNameSAN(Move move, Board.Board board)
+		public static string GetMoveNameSAN(Move move, Board board)
 		{
 			if (move.IsNull)
 			{
@@ -218,7 +215,7 @@ namespace Chess_Challenge.Framework.Chess.Helpers
 			}
 		}
 
-		public static Move GetMoveFromSAN(Board.Board board, string algebraicMove)
+		public static Move GetMoveFromSAN(Board board, string algebraicMove)
 		{
 			MoveGenerator moveGenerator = new MoveGenerator();
 

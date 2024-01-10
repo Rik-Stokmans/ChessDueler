@@ -1,5 +1,5 @@
 ﻿
-namespace Chess_Challenge.API
+namespace ChessChallenge.API
 {
     public interface IChessBot
     {

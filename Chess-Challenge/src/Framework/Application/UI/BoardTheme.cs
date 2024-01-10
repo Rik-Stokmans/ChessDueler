@@ -1,6 +1,6 @@
 ﻿using Raylib_cs;
 
-namespace Chess_Challenge.Framework.Application.UI
+namespace ChessChallenge.Application
 {
     public class BoardTheme
     {

@@ -1,11 +1,6 @@
-using System;
-using Chess_Challenge.Framework.Chess.Board;
-using Chess_Challenge.Framework.Chess.Helpers;
-using Chess_Challenge.Framework.Chess.Move_Generation.Bitboards;
-using Chess_Challenge.Framework.Chess.Move_Generation.Magics;
-
-namespace Chess_Challenge.Framework.Chess.Move_Generation
+namespace ChessChallenge.Chess
 {
+    using System;
     using static PrecomputedMoveData;
 
     public class MoveGenerator
@@ -39,7 +34,7 @@ namespace Chess_Challenge.Framework.Chess.Move_Generation
         ulong opponentSlidingAttackMap;
 
         bool generateQuietMoves;
-        Board.Board board;
+        Board board;
         int currMoveIndex;
 
         ulong enemyPieces;
@@ -51,7 +46,7 @@ namespace Chess_Challenge.Framework.Chess.Move_Generation
         // Otherwise it will have 1s everywhere.
         ulong moveTypeMask;
 
-        public System.Span<Move> GenerateMoves(Board.Board board, bool includeQuietMoves = true)
+        public System.Span<Move> GenerateMoves(Board board, bool includeQuietMoves = true)
         {
             System.Span<Move> moves = new Move[MaxMoves];
             return GenerateMoves(board, moves, includeQuietMoves);
@@ -59,7 +54,7 @@ namespace Chess_Challenge.Framework.Chess.Move_Generation
 
         // Generates list of legal moves in current position.
         // Quiet moves (non captures) can optionally be excluded. This is used in quiescence search.
-        public System.Span<Move> GenerateMoves(Board.Board board, System.Span<Move> moves, bool includeQuietMoves = true)
+        public System.Span<Move> GenerateMoves(Board board, System.Span<Move> moves, bool includeQuietMoves = true)
         {
             this.board = board;
             generateQuietMoves = includeQuietMoves;

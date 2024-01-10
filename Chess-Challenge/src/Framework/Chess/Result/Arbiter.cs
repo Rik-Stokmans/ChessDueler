@@ -1,9 +1,7 @@
-﻿using System.Linq;
-using Chess_Challenge.Framework.Chess.Helpers;
-using Chess_Challenge.Framework.Chess.Move_Generation;
-
-namespace Chess_Challenge.Framework.Chess.Result
+﻿namespace ChessChallenge.Chess
 {
+    using System.Linq;
+
     public static class Arbiter
     {
         public static bool IsDrawResult(GameResult result)
@@ -28,7 +26,7 @@ namespace Chess_Challenge.Framework.Chess.Result
         }
 
 
-        public static GameResult GetGameState(Board.Board board)
+        public static GameResult GetGameState(Board board)
         {
             MoveGenerator moveGenerator = new MoveGenerator();
             var moves = moveGenerator.GenerateMoves(board);
@@ -65,10 +63,10 @@ namespace Chess_Challenge.Framework.Chess.Result
         }
 
         // Test for insufficient material (Note: not all cases are implemented)
-        public static bool InsufficentMaterial(Board.Board board)
+        public static bool InsufficentMaterial(Board board)
         {
             // Can't have insufficient material with pawns on the board
-            if (board.pawns[Board.Board.WhiteIndex].Count > 0 || board.pawns[Board.Board.BlackIndex].Count > 0)
+            if (board.pawns[Board.WhiteIndex].Count > 0 || board.pawns[Board.BlackIndex].Count > 0)
             {
                 return false;
             }
@@ -80,10 +78,10 @@ namespace Chess_Challenge.Framework.Chess.Result
             }
 
             // If no pawns, queens, or rooks on the board, then consider knight and bishop cases
-            int numWhiteBishops = board.bishops[Board.Board.WhiteIndex].Count;
-            int numBlackBishops = board.bishops[Board.Board.BlackIndex].Count;
-            int numWhiteKnights = board.knights[Board.Board.WhiteIndex].Count;
-            int numBlackKnights = board.knights[Board.Board.BlackIndex].Count;
+            int numWhiteBishops = board.bishops[Board.WhiteIndex].Count;
+            int numBlackBishops = board.bishops[Board.BlackIndex].Count;
+            int numWhiteKnights = board.knights[Board.WhiteIndex].Count;
+            int numBlackKnights = board.knights[Board.BlackIndex].Count;
             int numWhiteMinors = numWhiteBishops + numWhiteKnights;
             int numBlackMinors = numBlackBishops + numBlackKnights;
             int numMinors = numWhiteMinors + numBlackMinors;
@@ -97,8 +95,8 @@ namespace Chess_Challenge.Framework.Chess.Result
             // Bishop vs bishop: is insufficient when bishops are same colour complex
             if (numMinors == 2 && numWhiteBishops == 1 && numBlackBishops == 1)
             {
-                bool whiteBishopIsLightSquare = BoardHelper.LightSquare(board.bishops[Board.Board.WhiteIndex][0]);
-                bool blackBishopIsLightSquare = BoardHelper.LightSquare(board.bishops[Board.Board.BlackIndex][0]);
+                bool whiteBishopIsLightSquare = BoardHelper.LightSquare(board.bishops[Board.WhiteIndex][0]);
+                bool blackBishopIsLightSquare = BoardHelper.LightSquare(board.bishops[Board.BlackIndex][0]);
                 return whiteBishopIsLightSquare == blackBishopIsLightSquare;
             }
 

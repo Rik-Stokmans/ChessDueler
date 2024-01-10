@@ -1,10 +1,9 @@
 
-using Chess_Challenge.Framework.Application.Helpers.API_Helpers;
-using Chess_Challenge.Framework.Chess.Move_Generation.Bitboards;
-using Chess_Challenge.Framework.Chess.Move_Generation.Magics;
-
-namespace Chess_Challenge.API
+namespace ChessChallenge.API
 {
+    using ChessChallenge.Application.APIHelpers;
+    using ChessChallenge.Chess;
+
     /// <summary>
     /// Helper class for working with bitboards.
     /// Bitboards are represented with the ulong type (unsigned 64 bit integer).

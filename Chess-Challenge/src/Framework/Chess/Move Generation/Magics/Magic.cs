@@ -1,4 +1,4 @@
-namespace Chess_Challenge.Framework.Chess.Move_Generation.Magics
+namespace ChessChallenge.Chess
 {
     using static PrecomputedMagics;
 

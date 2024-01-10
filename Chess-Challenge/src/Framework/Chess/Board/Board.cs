@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using Chess_Challenge.Framework.Chess.Helpers;
-using Chess_Challenge.Framework.Chess.Move_Generation.Bitboards;
-using Chess_Challenge.Framework.Chess.Move_Generation.Magics;
 
-namespace Chess_Challenge.Framework.Chess.Board
+namespace ChessChallenge.Chess
 {
     // Represents the current state of the board during a game.
     // The state includes things such as: positions of all pieces, side to move,

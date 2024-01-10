@@ -1,4 +1,4 @@
-﻿namespace Chess_Challenge.Framework.Application.Helpers.API_Helpers
+﻿namespace ChessChallenge.Application.APIHelpers
 {
     public static class BitboardDebugState
     {

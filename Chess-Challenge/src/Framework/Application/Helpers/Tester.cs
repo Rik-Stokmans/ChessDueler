@@ -1,10 +1,9 @@
-﻿using System;
-using Chess_Challenge.API;
-using Chess_Challenge.Framework.Chess.Helpers;
-using Chess_Challenge.Framework.Chess.Move_Generation;
-using Board = Chess_Challenge.Framework.Chess.Board.Board;
+﻿using ChessChallenge.API;
+using ChessChallenge.Application.APIHelpers;
+using ChessChallenge.Chess;
+using System;
 
-namespace Chess_Challenge.Framework.Application.Helpers
+namespace ChessChallenge.Application
 {
     public static class Tester
     {
@@ -57,7 +56,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
             string[] fens = { "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", "2b1b3/1r1P4/3K3p/1p6/2p5/6k1/1P3p2/4B3 w - - 0 42", "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - -", "r3k2r/pp3pp1/PN1pr1p1/4p1P1/4P3/3P4/P1P2PP1/R3K2R w KQkq - 4 4", "rnbq1k1r/pp1Pbppp/2p5/8/2B5/8/PPP1NnPP/RNBQK2R w KQ - 1 8", "r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10", "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -", "r3k1nr/p2pp1pp/b1n1P1P1/1BK1Pp1q/8/8/2PP1PPP/6N1 w kq - 0 1", "3k4/3p4/8/K1P4r/8/8/8/8 b - - 0 1", "8/8/1k6/2b5/2pP4/8/5K2/8 b - d3 0 1", "5k2/8/8/8/8/8/8/4K2R w K - 0 1", "3k4/8/8/8/8/8/8/R3K3 w Q - 0 1", "r3k2r/1b4bq/8/8/8/8/7B/R3K2R w KQkq - 0 1", "r3k2r/8/3Q4/8/8/5q2/8/R3K2R b KQkq - 0 1", "2K2r2/4P3/8/8/8/8/8/3k4 w - - 0 1", "8/8/1P2K3/8/2n5/1q6/8/5k2 b - - 0 1", "4k3/1P6/8/8/8/8/K7/8 w - - 0 1", "8/P1k5/K7/8/8/8/8/8 w - - 0 1", "K1k5/8/P7/8/8/8/8/8 w - - 0 1", "8/k1P5/8/1K6/8/8/8/8 w - - 0 1", "8/8/2k5/5q2/5n2/8/5K2/8 b - - 0 1", "r1bq2r1/1pppkppp/1b3n2/pP1PP3/2n5/2P5/P3QPPP/RNB1K2R w KQ a6 0 12", "r3k2r/pppqbppp/3p1n1B/1N2p3/1nB1P3/3P3b/PPPQNPPP/R3K2R w KQkq - 11 10", "4k2r/1pp1n2p/6N1/1K1P2r1/4P3/P5P1/1Pp4P/R7 w k - 0 6", "1Bb3BN/R2Pk2r/1Q5B/4q2R/2bN4/4Q1BK/1p6/1bq1R1rb w - - 0 1", "n1n5/PPPk4/8/8/8/8/4Kppp/5N1N b - - 0 1", "8/PPPk4/8/8/8/8/4Kppp/8 b - - 0 1", "8/2k1p3/3pP3/3P2K1/8/8/8/8 w - - 0 1", "3r4/2p1p3/8/1P1P1P2/3K4/5k2/8/8 b - - 0 1", "8/1p4p1/8/q1PK1P1r/3p1k2/8/4P3/4Q3 b - - 0 1" };
             Console.WriteLine($"Running perft (useStackalloc={useStackalloc})");
 
-            var board = new Board();
+            var board = new Chess.Board();
             long timeTotal = 0;
 
             for (int i = 0; i < fens.Length; i++)
@@ -97,7 +96,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
         static void TestMoveCreate()
         {
             Console.WriteLine("Testing move create");
-            var board = new Board();
+            var board = new Chess.Board();
             board.LoadPosition("2rqk2r/1p3p1p/p2p1n2/2PPn3/8/3B1QP1/PR1K1P1p/2B1R3 b k - 1 27");
             boardAPI = new(board);
 
@@ -115,7 +114,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
         {
 
             Console.WriteLine("Testing Bitboards");
-            var board = new Board();
+            var board = new Chess.Board();
             board.LoadPosition("r2q2k1/pp2rppp/3p1n2/1R1Pn3/8/2PB1Q1P/P4PP1/2B2RK1 w - - 7 16");
             boardAPI = new(board);
 
@@ -177,7 +176,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
         static void CheckTest()
         {
             Console.WriteLine("Testing Checks");
-            var board = new Board();
+            var board = new Chess.Board();
             board.LoadPosition("r2q1rk1/pp3ppp/3p1n2/3Pn3/8/2PB1Q1P/P4PP1/R1B2RK1 w - - 3 14");
             boardAPI = new(board);
 
@@ -198,7 +197,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
         static void PieceListTest()
         {
             Console.WriteLine("Piece Lists Tests");
-            var board = new Board();
+            var board = new Chess.Board();
             board.LoadPosition("1q3rk1/P5p1/4p2p/2ppP1N1/5Qb1/1PP5/7P/2R2RK1 w - - 0 28");
             boardAPI = new(board);
 
@@ -233,7 +232,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
         {
             Console.WriteLine("Repetition test");
             string fen = "3k4/8/3K4/8/8/8/8/4Q3 w - - 0 1";
-            var board = new Board();
+            var board = new Chess.Board();
             board.LoadPosition(fen);
             boardAPI = new(board);
 
@@ -346,7 +345,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
             Console.WriteLine("Draw test");
 
             // Repetition test
-            var board = new Board();
+            var board = new Chess.Board();
             board.LoadPosition("r1r3k1/p1q5/3p2pQ/1p1Pp1N1/2B5/1PP2P2/K1b3P1/7R b - - 2 24");
             boardAPI = new(board);
 
@@ -363,7 +362,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
             Assert(!boardAPI.IsDraw(), "Draw wrong");
 
             // Stalemate test
-            board = new Board();
+            board = new Chess.Board();
             board.LoadPosition("7K/8/6k1/5q2/8/8/8/8 b - - 0 1");
             boardAPI = new(board);
             Assert(!boardAPI.IsDraw(), "Draw wrong");
@@ -384,7 +383,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
             Assert(!boardAPI.IsInStalemate(), "Stalemate wrong");
 
             // Insufficient material
-            board = new Board();
+            board = new Chess.Board();
             board.LoadPosition("7K/3N4/6k1/2n5/8/8/8/8 b - - 0 1");
             boardAPI = new(board);
             Assert(!boardAPI.IsDraw(), "Draw wrong");
@@ -434,7 +433,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
             Console.WriteLine("Running Misc Tests");
 
             // Captures
-            var board = new Board();
+            var board = new Chess.Board();
             board.LoadPosition("1q3rk1/P5p1/4p2p/2ppP1N1/5Qb1/1PP5/7P/2R2RK1 w - - 0 28");
             boardAPI = new(board);
             Assert(boardAPI.IsWhiteToMove, "Colour to move wrong");
@@ -479,7 +478,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
             board.LoadPosition(startPos);
             board.MakeMove(MoveUtility.GetMoveFromUCIName("e4e5", board), false);
             board.MakeMove(MoveUtility.GetMoveFromUCIName("c6e5", board), false);
-            var b = new Board(board);
+            var b = new Chess.Board(board);
             boardAPI = new(b);
             Assert(boardAPI.GameMoveHistory[0].MovePieceType is PieceType.Pawn, "Wrong game move history");
             Assert(boardAPI.GameMoveHistory[0].CapturePieceType is PieceType.None, "Wrong game move history");
@@ -517,7 +516,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
         static void MoveGenTest()
         {
             Console.WriteLine("Running move gen tests");
-            Board board = new();
+            Chess.Board board = new();
             moveGen = new();
 
             string[] testFens =
@@ -680,7 +679,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
             public void Run()
             {
                 Console.WriteLine("Running misc search test");
-                Board b = new();
+                Chess.Board b = new();
                 b.LoadPosition("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - ");
                 board = new API.Board(b);
                 var sw = System.Diagnostics.Stopwatch.StartNew();
@@ -742,7 +741,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
             public void Run()
             {
                 Console.WriteLine("Running misc search test");
-                Board b = new();
+                Chess.Board b = new();
                 b.LoadPosition("8/2b5/2kp4/2p2K2/7P/1p3RP1/2n3N1/8 w - - 0 1");
                 board = new API.Board(b);
                 var sw = System.Diagnostics.Stopwatch.StartNew();
@@ -853,7 +852,7 @@ namespace Chess_Challenge.Framework.Application.Helpers
             {
                 this.useStackalloc = useStackalloc;
                 Console.WriteLine("Running misc search test | stackalloc = " + useStackalloc);
-                Board b = new();
+                Chess.Board b = new();
                 b.LoadPosition("2rqk2r/5p1p/p2p1n2/1pPPn3/8/3B1QP1/PR1K1P1p/2B1R3 w k b6 0 28");
                 board = new API.Board(b);
                 Search(4);

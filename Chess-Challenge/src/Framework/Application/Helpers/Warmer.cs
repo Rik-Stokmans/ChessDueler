@@ -1,16 +1,15 @@
-﻿using Chess_Challenge.Framework.Chess.Board;
-using Move = Chess_Challenge.API.Move;
+﻿using ChessChallenge.API;
 
-namespace Chess_Challenge.Framework.Application.Helpers
+namespace ChessChallenge.Application
 {
     public static class Warmer
     {
 
         public static void Warm()
         {
-            Board b = new();
+            Chess.Board b = new();
             b.LoadStartPosition();
-            API.Board board = new API.Board(b);
+            Board board = new Board(b);
             Move[] moves = board.GetLegalMoves();
 
             board.MakeMove(moves[0]);

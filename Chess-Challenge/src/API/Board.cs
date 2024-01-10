@@ -1,16 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Chess_Challenge.Framework.Application.Helpers.API_Helpers;
-using Chess_Challenge.Framework.Chess.Board;
-using Chess_Challenge.Framework.Chess.Helpers;
-using Chess_Challenge.Framework.Chess.Result;
-
-namespace Chess_Challenge.API
+namespace ChessChallenge.API
 {
+	using ChessChallenge.Application.APIHelpers;
+	using ChessChallenge.Chess;
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
+
 	public sealed class Board
 	{
-		readonly Framework.Chess.Board.Board board;
+		readonly Chess.Board board;
 		readonly APIMoveGen moveGen;
 		readonly RepetitionTable repetitionTable;
 
@@ -30,17 +29,17 @@ namespace Chess_Challenge.API
         /// Create a new board. Note: this should not be used in the challenge,
         /// use the board provided in the Think method instead.
         /// </summary>
-        public Board(Framework.Chess.Board.Board boardSource)
+        public Board(Chess.Board boardSource)
 		{
 			// Clone board and create game move history
-			board = new Framework.Chess.Board.Board();
+			board = new Chess.Board();
 			board.LoadPosition(boardSource.StartPositionInfo);
 			GameMoveHistory = new Move[boardSource.AllGameMoves.Count];
 			repetitionTable = new();
 
 			for (int i = 0; i < boardSource.AllGameMoves.Count; i ++)
 			{
-				Framework.Chess.Board.Move move = boardSource.AllGameMoves[i];
+				Chess.Move move = boardSource.AllGameMoves[i];
 				int movePieceType = PieceHelper.PieceType(board.Square[move.StartSquareIndex]);
 				int capturePieceType = move.IsEnPassant ? PieceHelper.Pawn : PieceHelper.PieceType(board.Square[move.TargetSquareIndex]);
 				GameMoveHistory[i] = new Move(move, movePieceType, capturePieceType);
@@ -81,7 +80,7 @@ namespace Chess_Challenge.API
 			if (!move.IsNull)
 			{
 				OnPositionChanged();
-				board.MakeMove(new Framework.Chess.Board.Move(move.RawValue), inSearch: true);
+				board.MakeMove(new Chess.Move(move.RawValue), inSearch: true);
 				repetitionTable.Push(ZobristKey, move.IsCapture || move.MovePieceType == PieceType.Pawn);
                 depth++;
 
@@ -96,7 +95,7 @@ namespace Chess_Challenge.API
 			if (!move.IsNull)
 			{
 				repetitionTable.TryPop();
-				board.UndoMove(new Framework.Chess.Board.Move(move.RawValue), inSearch: true);
+				board.UndoMove(new Chess.Move(move.RawValue), inSearch: true);
                 OnPositionChanged();
 				depth--;
 			}
@@ -259,7 +258,7 @@ namespace Chess_Challenge.API
 		/// </summary>
 		public Square GetKingSquare(bool white)
 		{
-			int colIndex = white ? Framework.Chess.Board.Board.WhiteIndex : Framework.Chess.Board.Board.BlackIndex;
+			int colIndex = white ? Chess.Board.WhiteIndex : Chess.Board.BlackIndex;
 			return new Square(board.KingSquare[colIndex]);
 		}
 
@@ -316,11 +315,11 @@ namespace Chess_Challenge.API
 		/// <summary>
 		/// 64-bit number where each bit that is set to 1 represents a square that contains any type of white piece.
 		/// </summary>
-		public ulong WhitePiecesBitboard => board.colourBitboards[Framework.Chess.Board.Board.WhiteIndex];
+		public ulong WhitePiecesBitboard => board.colourBitboards[Chess.Board.WhiteIndex];
 		/// <summary>
 		/// 64-bit number where each bit that is set to 1 represents a square that contains any type of black piece.
 		/// </summary>
-		public ulong BlackPiecesBitboard => board.colourBitboards[Framework.Chess.Board.Board.BlackIndex];
+		public ulong BlackPiecesBitboard => board.colourBitboards[Chess.Board.BlackIndex];
 
 		/// <summary>
 		/// 64-bit number where each bit that is set to 1 represents a
@@ -443,7 +442,7 @@ namespace Chess_Challenge.API
 		/// </summary>
 		public static Board CreateBoardFromFEN(string fen)
         {
-            Framework.Chess.Board.Board boardCore = new Framework.Chess.Board.Board();
+            Chess.Board boardCore = new Chess.Board();
             boardCore.LoadPosition(fen);
             return new Board(boardCore);
         }

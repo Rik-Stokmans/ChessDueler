@@ -1,35 +1,34 @@
 using System;
-using Chess_Challenge.Framework.Chess.Helpers;
 
-namespace Chess_Challenge.API
+namespace ChessChallenge.API
 {
     public readonly struct Square : IEquatable<Square>
     {
         /// <summary>
         /// Value from 0 to 7 representing files 'a' to 'h'
         /// </summary>
-        public int File => BoardHelper.FileIndex(Index);
+        public int File => Chess.BoardHelper.FileIndex(Index);
         /// <summary>
 		/// Value from 0 to 7 representing ranks '1' to '8'
 		/// </summary>
-		public int Rank => BoardHelper.RankIndex(Index);
+		public int Rank => Chess.BoardHelper.RankIndex(Index);
         /// <summary>
         /// Value from 0 to 63. The values map to the board like so:
-		/// 0 ï¿½ 7 : a1 ï¿½ h1, 8 ï¿½ 15 : a2 ï¿½ h2, ..., 56 ï¿½ 63 : a8 ï¿½ h8
+		/// 0 – 7 : a1 – h1, 8 – 15 : a2 – h2, ..., 56 – 63 : a8 – h8
         /// </summary>
         public readonly int Index;
 
         /// <summary>
         /// The algebraic name of the square, e.g. "e4"
         /// </summary>
-        public string Name => BoardHelper.SquareNameFromIndex(Index);
+        public string Name => Chess.BoardHelper.SquareNameFromIndex(Index);
 
         /// <summary>
         /// Create a square from its algebraic name, e.g. "e4"
         /// </summary>
         public Square(string name)
         {
-            Index = BoardHelper.SquareIndexFromName(name);
+            Index = Chess.BoardHelper.SquareIndexFromName(name);
         }
 
         /// <summary>
@@ -45,7 +44,7 @@ namespace Chess_Challenge.API
         /// </summary>
         public Square(int file, int rank)
         {
-            Index = BoardHelper.IndexFromCoord(file, rank);
+            Index = Chess.BoardHelper.IndexFromCoord(file, rank);
         }
 
         public override string ToString()

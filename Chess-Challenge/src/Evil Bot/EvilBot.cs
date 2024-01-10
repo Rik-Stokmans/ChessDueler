@@ -1,7 +1,7 @@
-﻿using System;
-using Chess_Challenge.API;
+﻿using ChessChallenge.API;
+using System;
 
-namespace Chess_Challenge.Evil_Bot
+namespace ChessChallenge.Example
 {
     // A simple bot that can spot mate in one, and always captures the most valuable piece it can.
     // Plays randomly otherwise.

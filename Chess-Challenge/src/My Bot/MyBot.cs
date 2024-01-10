@@ -1,6 +1,4 @@
-﻿using Chess_Challenge.API;
-
-namespace Chess_Challenge.My_Bot;
+﻿using ChessChallenge.API;
 
 public class MyBot : IChessBot
 {

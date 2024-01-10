@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using Chess_Challenge.Framework.Chess.Board;
-using Chess_Challenge.Framework.Chess.Helpers;
-using Chess_Challenge.Framework.Chess.Move_Generation.Bitboards;
 
-namespace Chess_Challenge.Framework.Chess.Move_Generation.Magics
+namespace ChessChallenge.Chess
 {
     public static class MagicHelper
     {

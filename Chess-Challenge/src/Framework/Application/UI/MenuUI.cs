@@ -1,11 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using Raylib_cs;
 using System.Numerics;
-using Chess_Challenge.Framework.Application.Core;
-using Chess_Challenge.Framework.Application.Helpers;
-using Raylib_cs;
+using System;
+using System.IO;
 
-namespace Chess_Challenge.Framework.Application.UI
+namespace ChessChallenge.Application
 {
     public static class MenuUI
     {

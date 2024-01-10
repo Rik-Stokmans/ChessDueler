@@ -1,24 +1,17 @@
-﻿using System;
+﻿using ChessChallenge.Chess;
+using ChessChallenge.Example;
+using Raylib_cs;
+using System;
 using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Chess_Challenge.Framework.Application.Helpers;
-using Chess_Challenge.Framework.Application.Helpers.Token_Counter;
-using Chess_Challenge.Framework.Application.Players;
-using Chess_Challenge.Framework.Application.UI;
-using Chess_Challenge.Framework.Chess.Board;
-using Chess_Challenge.Framework.Chess.Helpers;
-using Chess_Challenge.Framework.Chess.Move_Generation;
-using Chess_Challenge.Framework.Chess.Result;
-using Chess_Challenge.My_Bot;
-using Raylib_cs;
-using static Chess_Challenge.Framework.Application.Core.Settings;
-using static Chess_Challenge.Framework.Application.Helpers.ConsoleHelper;
+using static ChessChallenge.Application.Settings;
+using static ChessChallenge.Application.ConsoleHelper;
 
-namespace Chess_Challenge.Framework.Application.Core
+namespace ChessChallenge.Application
 {
     public class ChallengeController
     {

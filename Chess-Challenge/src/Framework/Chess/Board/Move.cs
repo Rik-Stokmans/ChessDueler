@@ -6,7 +6,7 @@ Bits 0-5: start square index
 Bits 6-11: target square index
 Bits 12-15: flag (promotion type, etc)
 */
-namespace Chess_Challenge.Framework.Chess.Board
+namespace ChessChallenge.Chess
 {
     public readonly struct Move
     {

@@ -1,9 +1,7 @@
-﻿using System;
-using Chess_Challenge.API;
-using Chess_Challenge.Framework.Application.Core;
-using Move = Chess_Challenge.Framework.Chess.Board.Move;
+﻿using ChessChallenge.API;
+using System;
 
-namespace Chess_Challenge.Framework.Application.Players
+namespace ChessChallenge.Application
 {
     public class ChessPlayer
     {
@@ -59,7 +57,7 @@ namespace Chess_Challenge.Framework.Application.Players
             }
         }
 
-        public void SubscribeToMoveChosenEventIfHuman(Action<Move> action)
+        public void SubscribeToMoveChosenEventIfHuman(Action<Chess.Move> action)
         {
             if (Human != null)
             {

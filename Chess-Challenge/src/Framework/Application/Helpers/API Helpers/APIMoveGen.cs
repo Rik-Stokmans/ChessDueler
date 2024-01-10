@@ -1,12 +1,8 @@
-﻿using System;
-using Chess_Challenge.Framework.Chess.Board;
-using Chess_Challenge.Framework.Chess.Helpers;
-using Chess_Challenge.Framework.Chess.Move_Generation;
-using Chess_Challenge.Framework.Chess.Move_Generation.Bitboards;
-using Chess_Challenge.Framework.Chess.Move_Generation.Magics;
-using static Chess_Challenge.Framework.Chess.Move_Generation.PrecomputedMoveData;
+﻿using ChessChallenge.Chess;
+using System;
+using static ChessChallenge.Chess.PrecomputedMoveData;
 
-namespace Chess_Challenge.Framework.Application.Helpers.API_Helpers
+namespace ChessChallenge.Application.APIHelpers
 {
 
     public class APIMoveGen

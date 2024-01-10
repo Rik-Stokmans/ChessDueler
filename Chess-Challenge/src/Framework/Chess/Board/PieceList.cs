@@ -1,4 +1,4 @@
-﻿namespace Chess_Challenge.Framework.Chess.Board
+﻿namespace ChessChallenge.Chess
 {
     public class PieceList
     {

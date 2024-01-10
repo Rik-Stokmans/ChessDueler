@@ -1,9 +1,7 @@
 ﻿
 using System.Text;
-using Chess_Challenge.Framework.Chess.Board;
-using Chess_Challenge.Framework.Chess.Result;
 
-namespace Chess_Challenge.Framework.Chess.Helpers
+namespace ChessChallenge.Chess
 {
 
     public static class PGNCreator
@@ -14,7 +12,7 @@ namespace Chess_Challenge.Framework.Chess.Helpers
             return CreatePGN(moves, GameResult.InProgress, FenUtility.StartPositionFEN);
         }
 
-        public static string CreatePGN(Board.Board board, GameResult result, string whiteName = "", string blackName = "")
+        public static string CreatePGN(Board board, GameResult result, string whiteName = "", string blackName = "")
         {
             return CreatePGN(board.AllGameMoves.ToArray(), result, board.GameStartFen, whiteName, blackName);
         }
@@ -24,7 +22,7 @@ namespace Chess_Challenge.Framework.Chess.Helpers
             startFen = startFen.Replace("\n", "").Replace("\r", "");
 
             StringBuilder pgn = new();
-            Board.Board board = new Board.Board();
+            Board board = new Board();
             board.LoadPosition(startFen);
             // Headers
             if (!string.IsNullOrEmpty(whiteName))
